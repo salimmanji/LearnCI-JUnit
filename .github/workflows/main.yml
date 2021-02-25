@@ -10,22 +10,21 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Running Tests
+     
+      - name: Run a one-line script
         run: |
-          echo Starting the tests:
+          echo Starting tests:
           mkdir bin
-          echo bin folder successfully created.
           mkdir lib
-          echo lib folder successfully created.
           curl https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.5.2/junit-platform-console-standalone-1.5.2.jar -o lib/junit-platform-console-standalone-1.5.2.jar
-          javac -d /bin src/Calculator.java
+          javac -d bin/ src/Calculator.java
           javac -d bin -cp bin:lib/junit-platform-console-standalone-1.5.2.jar test/*
           java -jar lib/junit-platform-console-standalone-1.5.2.jar --class-path bin --scan-class-path
-        
+          
