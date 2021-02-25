@@ -13,7 +13,9 @@ public class Calculator {
 	 */
 	public double action(double a, double b) {
 		double result = 0;
-		if (a<b) {
+		if (b = 0) {
+			result = 0;
+		}else if (a<b) {
 			result = a * b;
 		}else {
 			result = a/b;
